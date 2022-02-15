@@ -6,8 +6,16 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface DynamicShadowStyle {
+    }
     interface LinkTest {
         "link": string;
+    }
+    interface StaticShadowStyle {
+        /**
+          * whether style is injected
+         */
+        "shouldApplyStyle": boolean;
     }
     interface TestWithOptionalSlot {
         /**
@@ -21,11 +29,23 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDynamicShadowStyleElement extends Components.DynamicShadowStyle, HTMLStencilElement {
+    }
+    var HTMLDynamicShadowStyleElement: {
+        prototype: HTMLDynamicShadowStyleElement;
+        new (): HTMLDynamicShadowStyleElement;
+    };
     interface HTMLLinkTestElement extends Components.LinkTest, HTMLStencilElement {
     }
     var HTMLLinkTestElement: {
         prototype: HTMLLinkTestElement;
         new (): HTMLLinkTestElement;
+    };
+    interface HTMLStaticShadowStyleElement extends Components.StaticShadowStyle, HTMLStencilElement {
+    }
+    var HTMLStaticShadowStyleElement: {
+        prototype: HTMLStaticShadowStyleElement;
+        new (): HTMLStaticShadowStyleElement;
     };
     interface HTMLTestWithOptionalSlotElement extends Components.TestWithOptionalSlot, HTMLStencilElement {
     }
@@ -46,15 +66,25 @@ declare global {
         new (): HTMLTestWithoutSlotElement;
     };
     interface HTMLElementTagNameMap {
+        "dynamic-shadow-style": HTMLDynamicShadowStyleElement;
         "link-test": HTMLLinkTestElement;
+        "static-shadow-style": HTMLStaticShadowStyleElement;
         "test-with-optional-slot": HTMLTestWithOptionalSlotElement;
         "test-with-slot": HTMLTestWithSlotElement;
         "test-without-slot": HTMLTestWithoutSlotElement;
     }
 }
 declare namespace LocalJSX {
+    interface DynamicShadowStyle {
+    }
     interface LinkTest {
         "link"?: string;
+    }
+    interface StaticShadowStyle {
+        /**
+          * whether style is injected
+         */
+        "shouldApplyStyle"?: boolean;
     }
     interface TestWithOptionalSlot {
         /**
@@ -67,7 +97,9 @@ declare namespace LocalJSX {
     interface TestWithoutSlot {
     }
     interface IntrinsicElements {
+        "dynamic-shadow-style": DynamicShadowStyle;
         "link-test": LinkTest;
+        "static-shadow-style": StaticShadowStyle;
         "test-with-optional-slot": TestWithOptionalSlot;
         "test-with-slot": TestWithSlot;
         "test-without-slot": TestWithoutSlot;
@@ -77,7 +109,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "dynamic-shadow-style": LocalJSX.DynamicShadowStyle & JSXBase.HTMLAttributes<HTMLDynamicShadowStyleElement>;
             "link-test": LocalJSX.LinkTest & JSXBase.HTMLAttributes<HTMLLinkTestElement>;
+            "static-shadow-style": LocalJSX.StaticShadowStyle & JSXBase.HTMLAttributes<HTMLStaticShadowStyleElement>;
             "test-with-optional-slot": LocalJSX.TestWithOptionalSlot & JSXBase.HTMLAttributes<HTMLTestWithOptionalSlotElement>;
             "test-with-slot": LocalJSX.TestWithSlot & JSXBase.HTMLAttributes<HTMLTestWithSlotElement>;
             "test-without-slot": LocalJSX.TestWithoutSlot & JSXBase.HTMLAttributes<HTMLTestWithoutSlotElement>;

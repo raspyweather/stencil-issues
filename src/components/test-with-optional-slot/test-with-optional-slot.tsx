@@ -12,7 +12,6 @@ export class TestWithOptionalSlot {
   public useSlot: boolean;
 
   render() {
-    //return this.useSlot ? (<Host><slot></slot></Host>) : (<Host></Host>);
     return (<Host>
       {this.useSlot && <slot></slot>}
     </Host>);

@@ -8,7 +8,7 @@ describe('test-with-optional-slot', () => {
     + <test-with-optional-slot use-slot="false">
     + </test-with-optional-slot>
   */
-  xit('should behave without slot as a component without slot - fails', async () => {
+  it('should behave without slot as a component without slot - fails', async () => {
     const page = await newSpecPage({
       components: [TestWithOptionalSlot],
       html: `<test-with-optional-slot use-slot=false></test-with-optional-slot>`,
@@ -26,7 +26,7 @@ describe('test-with-optional-slot', () => {
     +   <!---->
     + </test-with-optional-slot>    
   */
-  xit('should behave without slot as a component without slot for manual comparison - fails', async () => {
+  it('should behave without slot as a component without slot for manual comparison - fails', async () => {
     const page = await newSpecPage({
       components: [TestWithOptionalSlot],
       html: `<test-with-optional-slot use-slot=false></test-with-optional-slot>`,
@@ -57,7 +57,7 @@ describe('test-with-optional-slot', () => {
     `);
   });
 
-  xit("should display content with slot - works", async () => {
+  it("should display content with slot - works", async () => {
     const page = await newSpecPage({
       components: [TestWithOptionalSlot],
       html: `<test-with-optional-slot use-slot="true">Content</test-with-optional-slot>`,

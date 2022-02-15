@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { TestWithSlot } from '../test-with-slot';
 
-describe('test-with-slot - fails', () => {
+describe('test-with-slot', () => {
   /* OUTPUT:
       - <test-with-slot></test-with-slot>
       + <test-with-slot>
